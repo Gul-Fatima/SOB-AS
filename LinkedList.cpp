@@ -57,7 +57,7 @@ std::string formatTimestamp(const std::time_t& time) {
     std::strftime(buffer, sizeof(buffer), "%a %b %d %H:%M:%S %Y", &tm);
     return std::string(buffer);
 }
-
+//Destructor:
 LinkedList::~LinkedList() {
     LinkedListNode* current = head;
     while (current != nullptr) {
@@ -66,7 +66,7 @@ LinkedList::~LinkedList() {
         current = next;
     }
 }
-
+//function to delete node(order) of linkedlist
 void LinkedList::removeOrders(Order* order) {
     LinkedListNode* current = head;
     LinkedListNode* prev = nullptr;
@@ -89,6 +89,7 @@ void LinkedList::removeOrders(Order* order) {
     removeOrderFromFile(order);
     delete current;
 }
+//Function to add order in linked list:
 void LinkedList::insertOrder(Order* order) {
     LinkedListNode* newNode = new LinkedListNode(order);
     if (head == nullptr) {
@@ -113,6 +114,7 @@ void LinkedList::insertOrder(Order* order) {
         }
     }
 }
+//function to delete the whole linkedlist
 void LinkedList::clear() {
     LinkedListNode* current = head;
     while (current != nullptr) {
@@ -122,7 +124,7 @@ void LinkedList::clear() {
     }
     head = nullptr;  // Reset the head to nullptr to indicate an empty list
 }
-
+//display all the order (nodes) in linked lisT:
 void LinkedList::displayOrders() const {
     LinkedListNode* current = head;
     while (current != nullptr) {

@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <fstream>
 #include <sstream>
-
+//helper function that reload data of all order in linkedlist whenever program is run:
 void OrderBook::reloadOrdersFromFile() {
     std::ifstream infile("Data1.txt");
     if (infile.is_open()) {
@@ -42,7 +42,7 @@ void OrderBook::reloadOrdersFromFile() {
 
 
 void OrderBook::placeOrder(Order* order) {
-
+    //whenever order is placed it's id also gets inserted in orderIds which will be used in function to keep track of inserting same order id:
     orderIds.insert(order->getId());
 
     if (order->getOrderType() == BUY) {
@@ -53,6 +53,7 @@ void OrderBook::placeOrder(Order* order) {
         sellOrders.insertOrder(order);
         sellOrdersQueue.push(order);
     }
+    //also making undoStack to be used whenever user wants to undo its last operation:
     undoStack.push(UndoOperation(UndoOperation::PLACE, order));
 }
 

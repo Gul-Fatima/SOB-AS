@@ -68,7 +68,7 @@ void OrderBook::removeOrder(Order* order) {
         /*sellOrdersQueue.remove(order);*/
         sellOrders.removeOrders(order);
     }
-    // Add the operation to the undo stack
+    // Add the operation to the undo stack, to keep track of last operation :
     undoStack.push(UndoOperation(UndoOperation::REMOVE, order));
 }
 
